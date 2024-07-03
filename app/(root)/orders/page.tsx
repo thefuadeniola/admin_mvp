@@ -51,7 +51,7 @@ const Orders = () => {
         <p className='font-semibold text-xl'>Filters:</p>
         {
           filters.map((item)=>(
-            <button className={`p-2 px-4 rounded-xl bar-border uppercase ${filter === item.name && 'bg-selected'}`} onClick={()=>setFilter(item.name)}>{item.name}</button>
+            <button key={item.name} className={`p-2 px-4 rounded-xl bar-border uppercase ${filter === item.name && 'bg-selected'}`} onClick={()=>setFilter(item.name)}>{item.name}</button>
           ))
         }
       </div>
