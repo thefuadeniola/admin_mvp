@@ -1,4 +1,4 @@
-export function convertTimestampToCustomFormat(timestamp: string) {
+export function convertTimestampToCustomFormat(timestamp) {
     // Create a new Date object from the timestamp
     const date = new Date(timestamp);
 
