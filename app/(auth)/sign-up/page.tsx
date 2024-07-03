@@ -37,9 +37,11 @@ const signup = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [message, setMessage] = useState('')
+  const [loading, setLoading] = useState(false)
   
   const handleSubmit = async (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true)
 
     const response = await fetch('/api/signup', {
       method: 'POST',
@@ -53,6 +55,7 @@ const signup = () => {
 
     if (response.ok) {
       setMessage('Sign up successful!');
+      setLoading(false)
       router.push('/sign-in')
     } else {
       setMessage(data.error || 'Something went wrong!');
@@ -84,7 +87,7 @@ const signup = () => {
 
             </div>
             <CardFooter className="flex flex-col justify-center items-center space-y-3 mt-4">
-          <Button type='submit' className='w-4/5 text-base bg-primary-blue'>Sign Up</Button>
+          <Button disabled={loading} type='submit' className='w-4/5 text-base bg-primary-blue'>Sign Up</Button>
           <p className='text-sm'>Already have an account? <Link href='/sign-in' className='text-primary-green'>Login</Link></p>
         </CardFooter>
 

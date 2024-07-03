@@ -34,12 +34,13 @@ const signup = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const [message, setMessage] = useState({});
 
   const handleSubmit = async (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setLoading(true)
     const response = await fetch('/api/signin', {
       method: 'POST',
       headers: {
@@ -59,6 +60,7 @@ const signup = () => {
     localStorage.setItem('cargorun_userData', JSON.stringify(userData))
 
     if (response.ok) {
+      setLoading(false)
       router.push('/dashboard')
     } else {
       setMessage(data.error || 'Something went wrong!');
@@ -89,7 +91,7 @@ const signup = () => {
 
             </div>
             <CardFooter className="flex flex-col justify-center items-center space-y-3 mt-4">
-          <Button type='submit' className='w-4/5 text-base bg-primary-blue'>Sign In</Button>
+          <Button disabled={loading} type='submit' className='w-4/5 text-base bg-primary-blue'>Sign In</Button>
           <p className='text-sm'>Don't have an account? <Link href='/sign-up' className='text-primary-green'>Create Account</Link></p>
         </CardFooter>
 

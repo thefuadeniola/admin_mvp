@@ -24,14 +24,14 @@ export function convertTimestampToCustomFormat(timestamp: string) {
     return `${day}.${month}.${year} - ${formattedHours}.${formattedMinutes} ${ampm}`;
 }
 
-export function shortenString(str) {
+export function shortenString(str: string) {
     if (str.length <= 5) {
       return str;
     }
     return str.substring(0, 5) + '...';
   }
   
-export function getCookie(name) {
+export function getCookie(name: string) {
   const nameEQ = name + "=";
   const ca = document.cookie.split(';');
   for (let i = 0; i < ca.length; i++) {
