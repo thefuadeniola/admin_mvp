@@ -76,7 +76,7 @@ const Page: React.FC = () => {
           </div>
 
           <div className='mt-10'>
-            <h1 className='text-xl font-semibold text-primary-blue'>Customer's Review</h1>
+            <h1 className='text-xl font-semibold text-primary-blue'>Customer&apos;s Review</h1>
             <div className='mt-6 flex flex-col items-left space-y-1'>
               <h2 className='font-semibold text-xl'>John Smith</h2>
               <h2>March 10, 2024</h2>

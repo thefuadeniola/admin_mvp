@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import TableOfOrders from '@/components/TableOfOrders'
 
-const page = () => {
+const Page = () => {
 
   const [data, setData] = useState(null)
   const [error, setError] = useState('')
@@ -51,7 +51,7 @@ const page = () => {
         <p className='font-semibold text-xl'>Filters:</p>
         {
           filters.map((item)=>(
-            <button className={`p-2 px-4 rounded-xl bar-border uppercase ${filter === item.name && 'bg-selected'}`} onClick={()=>setFilter(item.name)}>{item.name}</button>
+            <button key={item.name} className={`p-2 px-4 rounded-xl bar-border uppercase ${filter === item.name && 'bg-selected'}`} onClick={()=>setFilter(item.name)}>{item.name}</button>
           ))
         }
       </div>
@@ -60,4 +60,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

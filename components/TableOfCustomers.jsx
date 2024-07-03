@@ -27,7 +27,7 @@ export default function Component({data}) {
           <TableBody>
             {
                 data ? data.map((item)=>(
-                <TableRow>
+                <TableRow key={item._id}>
                     <TableCell className="font-medium text-blue-500"><span className='text-primary-blue'>{shortenString(item._id)}</span></TableCell>
                     <TableCell>{item.fullName}</TableCell>
                     <TableCell>{item.email}</TableCell>

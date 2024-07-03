@@ -27,7 +27,7 @@ export default function Component({data}) {
           <TableBody>
             {
               data ? data.map((item) => (
-              <TableRow onClick={()=> router.push(`/riders/${item._id}`, { scroll: false })}>
+              <TableRow key={item._id} onClick={()=> router.push(`/riders/${item._id}`, { scroll: false })}>
                 <TableCell className="font-medium text-blue-500"><span className='text-primary-blue'>{shortenString(item._id)}</span></TableCell>
                 <TableCell>{item.fullName}</TableCell>
                 <TableCell>{item.email}</TableCell>

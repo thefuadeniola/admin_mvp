@@ -92,7 +92,7 @@ const Signup = () => {
             </div>
             <CardFooter className="flex flex-col justify-center items-center space-y-3 mt-4">
           <Button disabled={loading} type='submit' className='w-4/5 text-base bg-primary-blue'>Sign In</Button>
-          <p className='text-sm'>Don't have an account? <Link href='/sign-up' className='text-primary-green'>Create Account</Link></p>
+          <p className='text-sm'>Don&apos;t have an account? <Link href='/sign-up' className='text-primary-green'>Create Account</Link></p>
         </CardFooter>
 
           </form>
