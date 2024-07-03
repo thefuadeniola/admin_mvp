@@ -12,7 +12,7 @@ const Summary = ({data}) => {
             <img src='/icons/order_summary.svg' height={84} width={84} alt='order_summary' />
             <div>
               <h1 className='font-semibold heading mb-2'>{data?.totalOrder || ''}</h1>
-              <p className='text-base font-thin'>Total Orders</p>
+              <p className='text-base '>Total Orders</p>
               <span className='flex flex-row items-center gap-4'>
                 <img src='/icons/up.svg' alt='increase' height={14} width={14} />
                 <p className='text-sm font-semibold'>4% (30 Days)</p>
@@ -24,7 +24,7 @@ const Summary = ({data}) => {
             <img src='/icons/delivered.svg' height={84} width={84} alt='order_summary' />
             <div>
               <h1 className='font-semibold heading mb-2'>{data?.deliveredOrder || ''}</h1>
-              <p className='text-base font-thin'>Total Delivered</p>
+              <p className='text-base '>Total Delivered</p>
               <span className='flex flex-row items-center gap-4'>
                 <img src='/icons/up.svg' alt='increase' height={14} width={14} />
                 <p className='text-sm font-semibold'>4% (30 Days)</p>
@@ -37,7 +37,7 @@ const Summary = ({data}) => {
             <img src='/icons/cancelled.svg' height={84} width={84} alt='order_summary' />
             <div>
               <h1 className='font-semibold heading mb-2'>{data?.cancelledOrder}</h1>
-              <p className='text-base font-thin'>Total Cancelled</p>
+              <p className='text-base '>Total Cancelled</p>
               <span className='flex flex-row items-center gap-4'>
                 <img src='/icons/down.svg' alt='increase' height={14} width={14} />
                 <p className='text-sm font-semibold'>4% (30 Days)</p>
