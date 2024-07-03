@@ -9,7 +9,7 @@ import TableOfDeliveries from '@/components/TableOfDeliveries'
 
 const barlow = Barlow({weight: ['200'],subsets: ['latin']})
 
-const page = () => {
+const Dashboard = () => {
 
   const [data, setData] = useState(null)
   const [order, setOrder] = useState(null)
@@ -61,6 +61,6 @@ const page = () => {
   )
 }
 
-export default page
+export default Dashboard
 
 

@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import TableOfOrders from '@/components/TableOfOrders'
 
-const page = () => {
+const Orders = () => {
 
   const [data, setData] = useState(null)
   const [error, setError] = useState('')
@@ -60,4 +60,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Orders

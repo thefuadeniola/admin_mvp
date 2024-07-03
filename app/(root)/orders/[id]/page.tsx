@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { usePathname } from 'next/navigation'
 import Loader from "react-loader-spinner"; 
 
-const page = () => {
+const Page = () => {
 
   const [order, setOrder] = useState(null)
   const router = useRouter()
@@ -74,7 +74,7 @@ const page = () => {
             </div>
 
             <div className='mt-10'>
-                <h1 className='text-xl font-semibold text-primary-blue'>Customer's Review</h1>
+                <h1 className='text-xl font-semibold text-primary-blue'>Customer&apos;s Review</h1>
                 <div className='mt-6 flex flex-col items-left space-y-1'>
                     <h2 className='font-semibold text-xl'>John Smith</h2>
                     <h2>March 10, 2024</h2>
@@ -86,7 +86,7 @@ const page = () => {
                         <img src='/icons/star.svg' alt='star' height={24} width={24} />
 
                     </div>
-                    <p className='max-w-xl'>“I couldn't be happier with the services provided by Justin  Law. They were professional, knowledgeable, and truly went above and beyond to help me with my case. I highly recommend them to anyone in need of legal assistance.”</p>
+                    <p className='max-w-xl'>“I couldn&apos;t be happier with the services provided by Justin  Law. They were professional, knowledgeable, and truly went above and beyond to help me with my case. I highly recommend them to anyone in need of legal assistance.”</p>
                 </div>
             </div>
 
@@ -102,4 +102,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

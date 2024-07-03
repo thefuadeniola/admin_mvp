@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { usePathname } from 'next/navigation'
 
 
-const page = () => {
+const Page = () => {
     const router = useRouter()
     const pathname = usePathname()
     const filterId = pathname.split('/')[2]
@@ -73,4 +73,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

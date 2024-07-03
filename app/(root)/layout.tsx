@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 
 'use client'
 
@@ -12,7 +10,6 @@ import { Barlow, Inter } from "next/font/google";
 const barlow = Barlow({weight:['100', '200', '300', '400', '500'] ,subsets:['latin']})
 const inter = Inter({subsets: ['latin']})
 
-const userContext = createContext();
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) 
 
@@ -20,13 +17,6 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 
 {
 
-  const [currentUser, setCurrentUser] = useState({})
-
-  const fetchUser = async () => {
-    const res = await fetch('/api/fetch_user')
-    const data = await res.json()
-    setCurrentUser(data)
-  }
 
 
   return (
@@ -34,10 +24,8 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
       <body className="flex flex-row pl-[22vw]">
         <SideNav />
         <div className={`${inter.className} w-full bg-gray px-8 py-4 min-h-screen`}>
-          <userContext.Provider value={{ currentUser, fetchUser }}>
             <NavBar />
             {children}
-          </userContext.Provider>
         </div>
       </body>
     </html>

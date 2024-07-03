@@ -1,11 +1,9 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 'use client'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 
-const page = () => {
+const Logout = () => {
 
     const [details, setDetails] = useState('')
     const [id, setId] = useState('')
@@ -80,7 +78,7 @@ const page = () => {
         if (response.ok) {
           // Clear client-side tokens or any other necessary cleanup
           localStorage.removeItem('cargorun_userData');
-          // Redirect to the login page or homepage
+          // Redirect to the login Logout or homeLogout
           router.push('/sign-in');
         } else {
           const data = await response.json();
@@ -157,4 +155,4 @@ function UploadIcon(props) {
     )
   }
 
-export default page
+export default Logout
