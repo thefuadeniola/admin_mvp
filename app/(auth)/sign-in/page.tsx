@@ -28,7 +28,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { FormEvent } from 'react'
 
-const signup = () => {
+const Signup = () => {
 
   const router = useRouter();
 
@@ -101,4 +101,4 @@ const signup = () => {
     )
 }
 
-export default signup
+export default Signup

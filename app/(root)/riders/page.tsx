@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import TableOfRiders from '@/components/TableOfRiders'
 
-const page = () => {
+const Page = () => {
   const [data, setData] = useState(null)
   const [error, setError] = useState('')
 
@@ -39,4 +39,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

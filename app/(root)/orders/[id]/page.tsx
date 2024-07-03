@@ -87,7 +87,7 @@ const Page: React.FC = () => {
                 <img src='/icons/star.svg' alt='star' height={24} width={24} />
                 <img src='/icons/star.svg' alt='star' height={24} width={24} />
               </div>
-              <p className='max-w-xl'>“I couldn't be happier with the services provided by Justin Law. They were professional, knowledgeable, and truly went above and beyond to help me with my case. I highly recommend them to anyone in need of legal assistance.”</p>
+              <p className='max-w-xl'>“I couldn&apos;t be happier with the services provided by Justin Law. They were professional, knowledgeable, and truly went above and beyond to help me with my case. I highly recommend them to anyone in need of legal assistance.”</p>
             </div>
           </div>
         </>

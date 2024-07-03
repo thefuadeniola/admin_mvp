@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import TableOfCustomers from '@/components/TableOfCustomers'
 
-const page = () => {
+const Customer = () => {
 
   const [data, setData] = useState(null)
   const [error, setError] = useState('')
@@ -34,4 +34,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Customer
