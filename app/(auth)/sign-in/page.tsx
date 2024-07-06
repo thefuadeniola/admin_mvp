@@ -37,7 +37,7 @@ const Signup = () => {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const [message, setMessage] = useState({});
+  const [message, setMessage] = useState('');
 
   const handleSubmit = async (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
