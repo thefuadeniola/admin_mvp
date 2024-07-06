@@ -21,7 +21,7 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
     <html lang="en">
       <body className="flex flex-row pl-[22vw]">
         <SideNav />
-        <div className={`${inter.className} w-full bg-gray px-8 py-4 min-h-screen`}>
+        <div className={`${inter.className} w-full bg-gray lg:px-8 px-4 py-4 min-h-screen`}>
             <NavBar />
             {children}
         </div>

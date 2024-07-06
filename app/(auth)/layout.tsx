@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className={`h-screen flex justify-center py-6 ${arimo.className}`} style={{
+    <main className={`min-h-screen flex justify-center py-6 ${arimo.className}`} style={{
         backgroundImage:
                 `linear-gradient(
                     rgba(11,11,11, 0.5),

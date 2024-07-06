@@ -6,7 +6,7 @@ const Summary = ({data}) => {
         <h1 className='heading text-primary-blue font-semibold mb-3'>Dashboard</h1>
         <p className='text-[#131313]'>Welcome back to cargo-run admin</p>
 
-        <div className='py-2 flex flex-row items-center w-full gap-6 justify-between mt-4'>
+        <div className='py-2 flex summary items-center w-full lg:gap-6 gap-4 justify-between mt-4'>
 
           <div className='w-full py-6 px-8 flex flex-row h-[163px] items-center bg-white gap-4 '>
             <img src='/icons/order_summary.svg' height={84} width={84} alt='order_summary' />

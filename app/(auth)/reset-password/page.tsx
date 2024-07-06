@@ -1,6 +1,6 @@
 'use client'
 import {z} from 'zod'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -34,37 +34,48 @@ const Signup = () => {
   const router = useRouter();
 
   const [email, setEmail] = useState('')
+  const [otp, setOtp] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
 
-  const [message, setMessage] = useState({});
+
+  useEffect(()=>{
+    const fetchEmail = () => {
+        const email = localStorage.getItem('resetEmail')
+        if(email){
+            setEmail(email)
+        }
+    }
+
+    fetchEmail();
+  }, [])
+
+  const [message, setMessage] = useState('');
 
   const handleSubmit = async (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true)
-    const response = await fetch('/api/signin', {
+    const response = await fetch('/api/reset-password', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, otp, password }),
     });
 
     const data = await response.json();
 
-    const userData = {
-      userName: data.data.name,
-      email: data.data.email,
-      token: data.data.token,
-      id: data.data._id
-    };
-    localStorage.setItem('cargorun_userData', JSON.stringify(userData))
-
     if (response.ok) {
       setLoading(false)
-      router.push('/dashboard')
+      setMessage('Successfully reset password, login to continue');
+      setSuccess(true)
+      setEmail('')
+      setOtp('');
+      setPassword('');
     } else {
-      setMessage(data.error || 'Something went wrong!');
+      setMessage(data.error || 'Something went wrong, please try again!');
+      setLoading(false)
     }
   };
 
@@ -72,14 +83,15 @@ const Signup = () => {
 
   
   return (
-      <>
-      {
-        message && <InfoCard message={message} success={false} />
-      }
-            <Card className="w-[450px] rounded-2xl">
+    <>
+        {
+            message && <InfoCard message={message} success={success} />
+        }
+        
+        <Card className="w-[450px] rounded-2xl">
         <CardHeader className='flex flex-col items-center justify-center space-y-4'>
-          <CardTitle>Login to Account</CardTitle>
-          <CardDescription>Please enter your email and password to continue</CardDescription>
+          <CardTitle>Reset Password &lt;2/2&gt;</CardTitle>
+          <CardDescription>Enter the OTP sent to your email and a new password</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit}>
@@ -87,24 +99,29 @@ const Signup = () => {
               
               <div className="flex flex-col space-y-3">
                 <Label htmlFor="name" className='font-thin'>Email Address</Label>
-                <Input id="name" className='bg-gray' required placeholder="esteban_schiller@gmail.com"value={email} onChange={(e)=>setEmail(e.target.value)} />
+                <Input id="name" className='bg-gray' required placeholder="esteban_schiller@gmail.com" value={email}  />
               </div>
               <div className="flex flex-col space-y-3">
-                <Label htmlFor="name" className='font-thin w-full flex flex-row justify-between'><span>Password</span><Link href='/forgot-password' className='text-primary-blue text-xs'>Forgot Password?</Link></Label>
+                <Label htmlFor="name" className='font-thin w-full flex flex-row justify-between'><span>OTP</span></Label>
+                <Input type='password' className='bg-gray' value={otp} required onChange={(e)=>setOtp(e.target.value)} placeholder="&#9679; &#9679; &#9679; &#9679; &#9679; &#9679;" />
+              </div>
+
+              <div className="flex flex-col space-y-3">
+                <Label htmlFor="name" className='font-thin w-full flex flex-row justify-between'><span>Password</span></Label>
                 <Input type='password' className='bg-gray' value={password} required onChange={(e)=>setPassword(e.target.value)} placeholder="&#9679; &#9679; &#9679; &#9679; &#9679; &#9679;" />
               </div>
 
             </div>
             <CardFooter className="flex flex-col justify-center items-center space-y-3 mt-4">
-          <Button disabled={loading} type='submit' className='w-4/5 text-base bg-primary-blue'>Sign In</Button>
-          <p className='text-sm'>Don&apos;t have an account? <Link href='/sign-up' className='text-primary-green'>Create Account</Link></p>
+          <Button disabled={loading} type='submit' className='w-4/5 text-base bg-primary-blue'>Reset Password</Button>
+          <p className='text-sm'>Back to <Link href='/sign-in' className='text-primary-green'>login</Link></p>
         </CardFooter>
 
           </form>
         </CardContent>
       </Card>  
 
-      </>
+    </>
     )
 }
 

@@ -72,7 +72,7 @@ const SideNav = () => {
                 navItems.map((item)=>(
                     <Link href={item.link} key={item.name} className={`flex flex-row gap-4 w-full items-center rounded-md min-w-sm px-4 py-2 ${pathname === item.link && 'bg-primary-blue opacity-90'}`}>
                         <Image src={pathname === item.link ? item.white : item.icon} alt={item.name} height={20} width={20} />
-                        <span className={`${pathname == item.link ? 'text-white' : 'text-black'}`}>{item.name}</span>
+                        <span className={`${pathname == item.link ? 'text-white' : 'text-black'} hidden lg:flex`}>{item.name}</span>
                     </Link>
                 ))
             }

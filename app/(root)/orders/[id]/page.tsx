@@ -2,15 +2,26 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import Loader from "react-loader-spinner"; 
+import OrderCard from '@/components/OrderCard'
 
 type Order = {
   orderId: string;
+  status: string;
+  paymentStatus: string;
+  createdAt: string;
+  trackingId: string;
+  updatedAt: string;
+  deliveryOption: string;
+  deliveryService: string;
   addressDetails: {
     houseNumber: string;
     landMark: string;
+    contactNumber: string;
   };
   receiverDetails: {
     address: string;
+    name: string;
+    phone: string;
   };
   _id: string;
 };
@@ -44,7 +55,7 @@ const Page: React.FC = () => {
   }, [filterId]);
 
   return (
-    <div className='bg-white min-h-screen mt-6 py-8 px-12'>
+    <div className='bg-white min-h-screen mt-6 py-8 px-12 lg:pr-[10%]'>
       <div className='w-full py-6'>
         <button onClick={() => router.back()}>
           <img src='/icons/arrow-left.svg' height={20} width={20} alt='back' />
@@ -53,6 +64,9 @@ const Page: React.FC = () => {
       {
         order ? 
         <>
+
+        <div className=' w-full flex md:flex-row flex-col justify-between'>
+          <div>
           <h1 className='heading'>Order <span className='text-primary-blue font-semibold'>{order.orderId}</span></h1>
           <div className='mt-4 flex flex-col items-left space-y-0'>
             <div className='flex flex-row items-center gap-3'>
@@ -66,14 +80,20 @@ const Page: React.FC = () => {
             </div>
           </div>
           <div className='mt-10'>
-            <h1 className='text-xl font-semibold text-primary-blue'>Rider Details</h1>
+            <h1 className='text-xl font-semibold text-primary-blue'>Receiver Details</h1>
             <div className='mt-6 flex flex-col items-left space-y-1'>
               <img src='/images/rider_picture.png' alt='rider-picture' height={60} width={60} />
-              <h2 className='font-semibold text-xl'>Adebayo Olayinka</h2>
-              <h2>Camry KWT 112 XA</h2>
-              <p>+234 801 112 4566</p>
+              <h2 className='font-semibold text-xl'>{order.receiverDetails.name}</h2>
+              <p className='font-semibold'>{order.receiverDetails.phone}</p>
+              <h2>Alternative Contact Number: {order.addressDetails.contactNumber}</h2>
             </div>
           </div>
+
+          </div>
+
+          <OrderCard deliveryStatus={order.status} paymentStatus={order.paymentStatus} trackingId={order.trackingId} deliveryService={order.deliveryService} deliveryOption={order.deliveryOption} created={order.createdAt} updated={order.updatedAt} />
+        </div>
+      
 
           <div className='mt-10'>
             <h1 className='text-xl font-semibold text-primary-blue'>Customer&apos;s Review</h1>

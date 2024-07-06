@@ -47,7 +47,7 @@ const Page = () => {
   return (
     <div className='mt-4'>
 
-      <div className='flex flex-row items-center gap-4'>
+      <div className='flex flex-row flex-wrap items-center gap-4'>
         <p className='font-semibold text-xl'>Filters:</p>
         {
           filters.map((item)=>(

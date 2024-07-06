@@ -11,7 +11,7 @@ export default function Component({data}) {
   return (
     <Card className="w-full mx-auto mt-8">
       <CardHeader>
-        <CardTitle>All</CardTitle>
+        <CardTitle>All Riders</CardTitle>
       </CardHeader>
       <CardContent>
         <Table>

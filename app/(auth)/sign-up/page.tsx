@@ -27,6 +27,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { FormEvent } from 'react'
+import InfoCard from '@/components/InfoCard'
 
 
 const Signup = () => {
@@ -38,6 +39,7 @@ const Signup = () => {
   const [password, setPassword] = useState('')
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
   
   const handleSubmit = async (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -54,15 +56,20 @@ const Signup = () => {
     const data = await response.json();
 
     if (response.ok) {
-      setMessage('Sign up successful!');
+      setMessage('Sign up successful, click login to continue!');
       setLoading(false)
-      router.push('/sign-in')
+      setSuccess(true)
     } else {
-      setMessage(data.error || 'Something went wrong!');
+      setMessage(data.error || 'Something went wrong, please try again!');
     }
   };  
 
   return (
+    <>
+      {
+        message && <InfoCard message={message} success={success} />
+      }
+
       <Card className="w-[450px] rounded-2xl">
         <CardHeader className='flex flex-col items-center justify-center space-y-4'>
           <CardTitle>Create an Account</CardTitle>
@@ -94,6 +101,8 @@ const Signup = () => {
           </form>
         </CardContent>
       </Card>  
+
+    </>
     )
 }
 
