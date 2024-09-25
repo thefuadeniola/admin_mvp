@@ -52,7 +52,7 @@ const Page: React.FC = () => {
             formData.append('image', selectedFile);
             formData.append('name', name)
         
-            const response = await fetch(`https://cargo-run-backend.onrender.com/api/v1/admin/${id}`, {
+            const response = await fetch(`https://cargo-run-d699d9f38fb5.herokuapp.com/api/v1/admin/${id}`, {
                 headers: {'Authorization': `Bearer ${details !== '' ? details.token : ''}`},
                 method: 'PATCH',
                 body: formData,

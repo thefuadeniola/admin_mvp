@@ -6,7 +6,7 @@ export async function POST(request) {
   const { name, email, password } = await request.json();
   
   try {
-    const response = await fetch('https://cargo-run-backend.onrender.com/api/v1/admin/sign-up', {
+    const response = await fetch('https://cargo-run-d699d9f38fb5.herokuapp.com/api/v1/admin/sign-up', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

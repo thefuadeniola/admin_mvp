@@ -32,6 +32,10 @@ const Page: React.FC = () => {
   const [error, setError] = useState<string>('')
   const [loading, setLoading] = useState(false)
   const [refire, setRefire] = useState(false)
+  const [message, setMessage] = useState('')
+  const [details, setDetails] = useState<User>('')
+  const [token, setToken] = useState('')
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,13 +58,26 @@ const Page: React.FC = () => {
   }, [filterId, refire]);
 
   const updateVerification = async (verificationString: string) => {
-    const res = await fetch('/api/verify-rider', {
-      method: 'POST',
-      body: JSON.stringify({ filterId, verificationString })
+    const userDataString = localStorage.getItem('cargorun_userData');
+    if (userDataString) {
+      const parsedObject = JSON.parse(userDataString) as User;
+      setDetails(parsedObject);
+      if (parsedObject !== '' && 'token' in parsedObject) {
+        setToken(parsedObject.token ?? '');
+      }
+    } else setMessage('You are not authorized to perform this action')
+    const res = await fetch(`https://cargo-run-d699d9f38fb5.herokuapp.com/api/v1/rider/credential/${filterId}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({'verifiedCredentials': verificationString})
     }) 
 
     if (res.ok) return setRefire(true)
   }
+
+  console.log(message)
 
   return (
     <div className='w-full bg-white min-h-screen mt-6 p-6'>

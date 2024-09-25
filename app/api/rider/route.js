@@ -11,7 +11,7 @@ export async function GET(request) {
 
     const userData = cookies().get('cargorun_userToken');
       
-    const response = await fetch(`https://cargo-run-backend.onrender.com/api/v1/rider?_id=${filterId}`, {
+    const response = await fetch(`https://cargo-run-d699d9f38fb5.herokuapp.com/api/v1/rider?_id=${filterId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
